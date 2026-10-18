@@ -248,16 +248,6 @@ const projetos = [
         titulo: "Portfólio Web",
         descricao: "Meu portfólio pessoal, desenvolvido para apresentar minhas habilidades e experiências profissionais.",
         tecnologias: ["HTML", "CSS", "JavaScript"]
-    },
-    {
-        titulo: "Calculadora Python",
-        descricao: "Aplicação em Python para praticar lógica de programação, funções e operações matemáticas.",
-        tecnologias: ["Python"]
-    },
-    {
-        titulo: "Pesquisa em NLP",
-        descricao: "Projeto acadêmico utilizando processamento de linguagem natural para classificação de textos.",
-        tecnologias: ["Python", "NLP"]
     }
 ];
 
