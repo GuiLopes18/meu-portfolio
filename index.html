@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Guilherme Pereira, desenvolvedor de software. Conheça meus projetos, habilidades e certificações.">
+
+    <title>Guilherme | Software Developer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 1. CABEÇALHO E NAVEGAÇÃO -->
+    <header>
+
+        <div class="marca">
+
+            <a
+                href="#inicio"
+                class="marca-link"
+                aria-label="Guilherme Pereira - Voltar ao início"
+            >
+
+                <span class="marca-icone" aria-hidden="true">
+                    &lt;/&gt;
+                </span>
+
+                <span class="marca-nome">
+                    Guilherme <span>Pereira</span>
+                </span>
+
+            </a>
+
+        </div>
+
+        <nav
+            id="menu-navegacao"
+            aria-label="Navegação principal"
+        >
+
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre mim</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#certificacoes">Certificações</a>
+            <a href="#contato">Contato</a>
+
+        </nav>
+
+        <button
+            id="botao-tema"
+            class="botao-tema"
+            type="button"
+            aria-label="Alternar tema"
+        >
+            Modo claro
+        </button>
+
+        <button
+            id="botao-menu"
+            class="botao-menu"
+            type="button"
+            aria-label="Abrir menu de navegação"
+            aria-controls="menu-navegacao"
+            aria-expanded="false"
+        >
+
+            <span class="menu-linha"></span>
+            <span class="menu-linha"></span>
+            <span class="menu-linha"></span>
+
+        </button>
+
+    </header>
+
+    <main>
+
+        <!-- 2. INÍCIO -->
+        <section id="inicio" class="hero">
+
+            <p class="hero-etiqueta">
+                OLÁ, SEJA BEM-VINDO!
+            </p>
+
+            <h1 class="hero-nome">
+                Guilherme Pereira<span>.</span>
+            </h1>
+
+            <h2 class="hero-titulo">
+                Desenvolvedor de Software
+            </h2>
+
+            <div class="hero-acoes">
+
+                <a href="#projetos" class="botao botao-primario">
+                    Ver projetos
+                </a>
+
+                <a href="#contato" class="botao botao-secundario">
+                    Entre em contato
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- 3. SOBRE MIM -->
+        <section id="sobre" class="secao-sobre">
+
+            <div class="sobre-grid">
+
+                <div class="sobre-foto">
+
+                    <img
+                        src="assets/imagens/foto-sobre-mim.png"
+                        alt="Fotografia de Guilherme Pereira"
+                        loading="lazy"
+                        width="600"
+                        height="800"
+                    >
+                </div>
+
+                <div class="sobre-conteudo">
+
+                    <h2 class="titulo-secao">Sobre mim</h2>
+
+                    <p>
+                        Sou natural de Brasília, Distrito Federal, nascido em 2003, e formado em <strong>Ciência da Computação</strong> pelo 
+                        Centro Universitário de Brasília (UniCEUB). Desde cedo, sempre tive interesse por tecnologia e 
+                        curiosidade em entender como ela funciona e como pode ser utilizada para criar soluções.
+                    </p>
+
+                    <p>
+                        Ao longo da minha trajetória acadêmica e profissional, tive a oportunidade de desenvolver meus 
+                        conhecimentos em programação, participar de projetos de desenvolvimento de software e explorar 
+                        diferentes tecnologias.
+                    </p>
+
+                    <p>
+                        Meu objetivo é me tornar um desenvolvedor <strong>Full Stack</strong>.
+                        Tenho interesse em explorar novas tecnologias,
+                        aprimorar minhas habilidades de programação
+                        e contribuir para projetos que apresentem
+                        <strong>soluções eficientes para problemas reais</strong>.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 4. EXPERIÊNCIA PROFISSIONAL -->
+        <section id="experiencia">
+
+            <h2 class="titulo-secao">
+                Experiência profissional
+            </h2>
+
+            <p>
+                Conheça minha trajetória profissional
+                e as experiências que contribuíram
+                para meu desenvolvimento.
+            </p>
+
+            <!-- Experiências geradas pelo JavaScript -->
+            <ol
+                id="lista-experiencias"
+                class="experiencia-lista"
+                aria-label="Histórico profissional"
+            ></ol>
+
+        </section>
+
+        <!-- 5. PROJETOS -->
+        <section id="projetos">
+
+            <h2 class="titulo-secao">Projetos</h2>
+
+            <p>
+                Conheça os projetos que desenvolvi ao longo da minha trajetória como desenvolvedor.
+            </p>
+
+            <div
+                id="filtros-projetos"
+                class="filtros-projetos"
+                role="group"
+                aria-label="Filtrar projetos por tecnologia"
+            ></div>
+
+            <div
+                id="lista-projetos"
+                class="projetos-grid"
+                aria-live="polite"
+            ></div>
+
+            <!-- Mensagem quando não encontrar projetos -->
+            <div id="sem-projetos" class="sem-projetos" role="status" hidden>
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                    <path d="m8 8 6 6"/>
+                    <path d="m14 8-6 6"/>
+                </svg>
+
+                <h3>Nenhum projeto encontrado</h3>
+
+                <p>
+                    Experimente remover um dos filtros selecionados.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- 6. HABILIDADES -->
+        <section id="habilidades">
+
+            <h2 class="titulo-secao">Habilidades</h2>
+
+            <p>
+                Conhecimentos e habilidades que fazem parte
+                da minha trajetória.
+            </p>
+
+            <!-- Cards gerados pelo JavaScript -->
+            <ul
+                id="lista-habilidades"
+                class="habilidades-grid"
+                aria-label="Minhas habilidades"
+            ></ul>
+
+        </section>
+
+        <!-- 7. CERTIFICAÇÕES -->
+        <section id="certificacoes">
+
+            <h2 class="titulo-secao">Certificações</h2>
+
+            <p>
+                Conheça minhas certificações, conquistas e qualificações profissionais.
+            </p>
+
+            <div class="certificacoes-carrossel">
+
+                <button
+                    id="certificacao-anterior"
+                    class="certificacao-seta"
+                    type="button"
+                    aria-label="Ver certificações anteriores"
+                    aria-controls="certificacoes-janela"
+                >
+                    &#10094;
+                </button>
+
+                <div
+                    id="certificacoes-janela"
+                    class="certificacoes-janela"
+                    role="region"
+                    aria-roledescription="carrossel"
+                    aria-label="Certificações profissionais"
+                    tabindex="0"
+                >
+
+                    <!-- Cartões criados pelo JavaScript -->
+                    <div
+                        id="lista-certificacoes"
+                        class="certificacoes-trilha"
+                    ></div>
+
+                </div>
+
+                <button
+                    id="certificacao-proximo"
+                    class="certificacao-seta"
+                    type="button"
+                    aria-label="Ver próximas certificações"
+                    aria-controls="certificacoes-janela"
+                >
+                    &#10095;
+                </button>
+
+            </div>
+
+            <div
+                id="indicadores-certificacoes"
+                class="certificacoes-indicadores"
+                role="group"
+                aria-label="Páginas de certificações"
+            ></div>
+
+        </section>
+
+        <!-- 8. CONTATO -->
+        <section id="contato">
+            <h2 class="titulo-secao">Entre em contato</h2>
+
+            <div class="contato-grid">
+
+                <form id="form-contato" class="form-contato">
+
+                    <div class="campo">
+
+                        <label for="nome">Nome</label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="email">E-mail</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            maxlength="254"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="mensagem">Mensagem</label>
+
+                        <div class="textarea-container">
+
+                            <textarea
+                                id="mensagem"
+                                name="mensagem"
+                                placeholder="Digite sua mensagem"
+                                rows="5"
+                                minlength="10"
+                                maxlength="1000"
+                                aria-describedby="contador-mensagem"
+                                required
+                            ></textarea>
+
+                            <span
+                                id="contador-mensagem"
+                                class="contador-mensagem"
+                            >
+                                0 / 1000
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        id="botao-enviar"
+                        type="submit"
+                        class="botao botao-primario"
+                    >
+                        Enviar mensagem
+                    </button>
+
+                    <p
+                        id="resposta-contato"
+                        class="resposta-contato"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+                <div class="contato-detalhes">
+
+                    <div class="contato-bloco">
+                        <h3>E-mail</h3>
+
+                        <a class="contato-email" href="mailto:guilcp2003@gmail.com">
+                            guilcp2003@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="contato-bloco">
+                        <h3>Redes sociais</h3>
+
+                        <div class="redes-sociais">
+
+                            <a
+                                class="rede-social"
+                                href="https://github.com/GuiLopes18"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span class="rede-social-icone">
+                                    <svg viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3"/>
+                                        <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-7 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"/>
+                                    </svg>
+                                </span>
+
+                                <span>/GuiLopes18</span>
+                            </a>
+
+                            <a
+                                class="rede-social"
+                                href="https://www.linkedin.com/in/guilherme-lopes-c-pereira/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span class="rede-social-icone">
+                                    <svg viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </span>
+
+                                <span>/guilherme-lopes-c-pereira</span>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 9. RODAPÉ -->
+    <footer class="rodape">
+
+        <div class="rodape-marca">
+
+            <span class="rodape-icone" aria-hidden="true">
+                &lt;/&gt;
+            </span>
+
+            <span>Guilherme Pereira</span>
+
+        </div>
+
+        <p>
+            &copy; <span id="ano-atual"></span> Guilherme Pereira.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+    <!-- 10. BOTÃO PARA VOLTAR AO TOPO -->
+    <button
+        id="botao-topo"
+        class="botao-topo"
+        type="button"
+        aria-label="Voltar ao início da página"
+        title="Voltar ao topo"
+        hidden
+    >
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- 11. JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"></script>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
