@@ -242,28 +242,42 @@ if (listaExperiencias) {
    04. PROJETOS
 ======================================== */
 
-// Edite este array para atualizar os projetos apresentados no portfólio.
+// Os projetos são cadastrados aqui.
+// Os links são opcionais e aparecem como botões nos cartões.
+
 const projetos = [
     {
         titulo: "Portfólio Web",
         descricao: "Meu portfólio pessoal, desenvolvido para apresentar minhas habilidades e experiências profissionais.",
-        tecnologias: ["HTML", "CSS", "JavaScript"]
+        tecnologias: ["HTML", "CSS", "JavaScript"],
+        link: "https://guipereira.dev.br/"
+    },
+    {
+        titulo: "My Kitchen",
+        descricao: "Aplicação web para cadastrar, organizar e compartilhar receitas.",
+        tecnologias: ["React", "JavaScript", "Supabase"],
+        link: "https://mykitchenrecipes.vercel.app/"
     }
 ];
+
+
+/* 04.1 Elementos da página */
 
 const listaProjetos = document.querySelector("#lista-projetos");
 const filtrosProjetos = document.querySelector("#filtros-projetos");
 const mensagemSemProjetos = document.querySelector("#sem-projetos");
 
-// Set não permite repetição: um filtro só pode estar selecionado uma vez.
 const tecnologiasSelecionadas = new Set();
 let observadorAnimacoes = null;
 
-/* 04.1 Filtragem e montagem dos cartões */
+
+/* 04.2 Filtragem dos projetos */
 
 function filtrarProjetos(filtros) {
 
-    // Os filtros são cumulativos: ao selecionar HTML e CSS, o projeto precisa ter ambos.
+    // Os filtros são cumulativos.
+    // Exemplo: React + JavaScript exige que o projeto tenha ambos.
+
     return projetos.filter((projeto) =>
         [...filtros].every((tecnologia) =>
             projeto.tecnologias.includes(tecnologia)
@@ -271,15 +285,26 @@ function filtrarProjetos(filtros) {
     );
 }
 
+
+/* 04.3 Criação dos cartões */
+
 function criarCartaoProjeto(projeto) {
+
     const card = document.createElement("article");
     card.classList.add("projeto-card");
+
+    // Título
     const titulo = document.createElement("h3");
     titulo.textContent = projeto.titulo;
+
+    // Descrição
     const descricao = document.createElement("p");
     descricao.textContent = projeto.descricao;
+
+    // Tecnologias
     const tecnologias = document.createElement("div");
     tecnologias.classList.add("tecnologias");
+
     projeto.tecnologias.forEach((tecnologia) => {
 
         const etiqueta = document.createElement("span");
@@ -287,69 +312,149 @@ function criarCartaoProjeto(projeto) {
 
         tecnologias.appendChild(etiqueta);
     });
+
+    // Área dos links
+    const links = document.createElement("div");
+    links.classList.add("projeto-links");
+
+    // Botão para acessar a aplicação
+    if (projeto.link) {
+
+        const linkProjeto = document.createElement("a");
+
+        linkProjeto.href = projeto.link;
+        linkProjeto.target = "_blank";
+        linkProjeto.rel = "noopener noreferrer";
+
+        linkProjeto.classList.add(
+            "projeto-link",
+            "projeto-link-primario"
+        );
+
+        linkProjeto.textContent = "Ver projeto ↗";
+
+        links.appendChild(linkProjeto);
+    }
+
+    // Botão para acessar o código no GitHub
+    if (projeto.github) {
+
+        const linkGithub = document.createElement("a");
+
+        linkGithub.href = projeto.github;
+        linkGithub.target = "_blank";
+        linkGithub.rel = "noopener noreferrer";
+
+        linkGithub.classList.add(
+            "projeto-link",
+            "projeto-link-secundario"
+        );
+
+        linkGithub.textContent = "GitHub ↗";
+
+        links.appendChild(linkGithub);
+    }
+
+    // Monta o cartão
     card.append(titulo, descricao, tecnologias);
+
+    // Exibe a área de links somente quando existir algum.
+    if (links.children.length > 0) {
+        card.appendChild(links);
+    }
+
     return card;
 }
 
+
+/* 04.4 Exibição dos projetos */
+
 function exibirProjetos() {
+
     const projetosFiltrados = filtrarProjetos(
         tecnologiasSelecionadas
     );
+
     const cartoes = projetosFiltrados.map(criarCartaoProjeto);
-    // Substitui os cartões anteriores sem acumular resultados a cada filtro.
+
+    // Atualiza os cartões sem acumular resultados anteriores.
     listaProjetos.replaceChildren(...cartoes);
+
     mensagemSemProjetos.hidden = projetosFiltrados.length > 0;
+
+    // Mantém as animações nos cartões criados dinamicamente.
     if (observadorAnimacoes) {
         cartoes.forEach(observarElemento);
     }
 }
 
-/* 04.2 Botões de filtro */
+
+/* 04.5 Atualização visual dos filtros */
 
 function atualizarFiltros() {
+
     filtrosProjetos.querySelectorAll(".filtro-btn").forEach((botao) => {
 
         const tecnologia = botao.dataset.tecnologia;
+
         const ativo = tecnologia === "Todos"
             ? tecnologiasSelecionadas.size === 0
             : tecnologiasSelecionadas.has(tecnologia);
+
         botao.classList.toggle("ativo", ativo);
         botao.setAttribute("aria-pressed", String(ativo));
     });
 }
 
+
+/* 04.6 Criação dos filtros */
+
 function criarFiltros() {
+
+    // Recupera todas as tecnologias e elimina as repetidas.
     const tecnologias = projetos.flatMap(
         (projeto) => projeto.tecnologias
     );
-    // Set elimina tecnologias repetidas e mantém a ordem da primeira ocorrência.
+
     const filtros = ["Todos", ...new Set(tecnologias)];
+
     filtros.forEach((tecnologia) => {
 
         const botao = document.createElement("button");
 
         botao.type = "button";
         botao.classList.add("filtro-btn");
+
         botao.textContent = tecnologia;
         botao.dataset.tecnologia = tecnologia;
+
         botao.addEventListener("click", () => {
 
             if (tecnologia === "Todos") {
+
                 tecnologiasSelecionadas.clear();
 
             } else if (tecnologiasSelecionadas.has(tecnologia)) {
+
                 tecnologiasSelecionadas.delete(tecnologia);
 
             } else {
+
                 tecnologiasSelecionadas.add(tecnologia);
             }
+
             atualizarFiltros();
             exibirProjetos();
         });
+
         filtrosProjetos.appendChild(botao);
     });
+
     atualizarFiltros();
 }
+
+
+/* 04.7 Inicialização */
 
 if (listaProjetos && filtrosProjetos && mensagemSemProjetos) {
 
