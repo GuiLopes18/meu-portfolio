@@ -799,6 +799,59 @@ main section > p {
     font-size: 15px;
 }
 
+.projeto-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-top: 8px;
+}
+
+.projeto-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    flex: none;
+    width: auto;
+    min-width: 0;
+    padding: 6px 0;
+
+    background: transparent;
+    color: var(--color-accent);
+
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.projeto-link:hover {
+    color: var(--color-primary);
+    transform: translateX(3px);
+}
+
+
+.projeto-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .projeto-link {
+        transition: none;
+    }
+
+    .projeto-link:hover {
+        transform: none;
+    }
+}
 
 /* ========================================
    11. HABILIDADES
