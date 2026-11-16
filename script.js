@@ -1,8 +1,6 @@
 /**
  * Portfólio pessoal — interações da página.
- *
- * Organização: cada seção reúne seus dados, funções e eventos.
- * Edite os arrays para atualizar o conteúdo, sem precisar alterar o HTML.
+ 
  */
 
 /* ========================================
@@ -658,10 +656,17 @@ const certificacoes = [
     },
     {
         id: 6,
-        ordem: 6,
+        ordem: 7,
         nome: "Básico ao Avançado - O curso Completo de Macros e VBA Excel",
         instituicao: "Udemy",
         link: "assets/certificados/Certificado Macros e VBA - Guilherme Lopes Costa Pereira.pdf"
+    },
+    {
+        id: 7,
+        ordem: 6,
+        nome: "Inteligência Artificial nos 3 Horizontes de Crescimento e Inovação.",
+        instituicao: "Universidade de Brasília",
+        link: "assets/certificados/Inteligência Artificial nos 3 Horizontes de Crescimento e Inovação.pdf"
     }
 ];
 
